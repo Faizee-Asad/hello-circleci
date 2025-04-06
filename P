@@ -1,6 +1,6 @@
 # hello-circleci
 
-p2 data reading
+#p2 data reading
 
 #Step 1 Install pyspark and libraries
 !pip install pyspark
@@ -22,7 +22,7 @@ pandas_df = df.toPandas()
 print(pandas_df.head())
 print(pandas_df.tail())
 
-#3a
+#3a combining data frame
 print("Kaustubh Karande KSMSCIT015")
 #COMBINING DATAFRAME IN PYSPARK
 from pyspark.sql import SparkSession
@@ -55,7 +55,7 @@ spark = SparkSession.builder.appName('read data eg').getOrCreate()
 df1 = spark.read.option("Header",True).csv('1.csv')
 df1.show()
 
-#4
+#4 collect filter map map reduce
 print("Kaustubh Karande KSMSCIT015")
 from pyspark.sql import  SparkSession
 from pyspark.sql.functions import col
@@ -95,7 +95,7 @@ result = total_sales_rdd.collect()
 for product, total in result:
     print(f"{product}: ${total}")
 
-#5
+#5 data frame creation
 print("Kaustubh Karande KSMSCIT015")
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName('SparkSession example').config('Spark Config','config - value').getOrCreate()
@@ -126,7 +126,7 @@ df.filter(df['Age']>21).show()
 print("Location Filter")
 df.filter(df['City']=="Mumbai").show()
 
-#6
+#6 sql query with spark session
 #Part A
 print("Kaustubh Karande KSMSCIT015")
 import pyspark
@@ -168,7 +168,7 @@ plt.xlabel('Category')
 plt.ylabel('Price')
 plt.show()
 
-#7
+#7 create user define function
 print("Kaustubh Karande KSMSCIT015")
 print("Age and Names")
 #import libraies
@@ -197,7 +197,7 @@ print("Age Count")
 age_count = df_with_group.groupBy("Age_Group").count()
 age_count.show()
 
-#8
+#8 Linear regression
 from pyspark.sql import SparkSession
 from pyspark.ml.regression import LinearRegression
 from pyspark.ml.feature import VectorAssembler
@@ -224,7 +224,7 @@ print("Kaustubh Karande KSMSCIT015")
 prediction = LR_model.transform(Assemebled_df)
 print(prediction.show())
 
-#9
+#9 kmean clustering
 from pyspark.sql import SparkSession
 from pyspark.ml.clustering import KMeans
 from pyspark.ml.feature import VectorAssembler
@@ -247,7 +247,7 @@ print("Kaustubh Karande KSMSCIT015")
 for center in model.clusterCenters():
 print(center)
 
-#10
+#10 logistic reg
 from pyspark.sql import SparkSession
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.feature import CountVectorizer,IDF,Tokenizer
@@ -277,7 +277,7 @@ lr_model = LR.fit(df)
 prediction = lr_model.transform(df)
 prediction.show()
 
-#11
+#11 naive bayes
 from pyspark.sql import SparkSession
 from pyspark.ml.feature import Tokenizer, HashingTF, StringIndexer
 from pyspark.ml.classification import NaiveBayes
@@ -316,7 +316,7 @@ evaluator = MulticlassClassificationEvaluator(
 accuracy = evaluator.evaluate(predictions)
 print(f"Test set accuracy: {accuracy:.2f}")
 
-#12
+#12 word count with pyspark steaming
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("WordCount").getOrCreate()
 sc = spark.sparkContext
@@ -337,7 +337,7 @@ result = word_counts.collect()
 for word, count in result:
     print(f"{word}: {count}")
 
-#13
+#13 word count and data manipulation
 #word count
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import split,explode,col
