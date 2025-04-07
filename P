@@ -264,3 +264,113 @@ iris = load_iris()
 X = iris.data
 y = iris.target
 print("Dataset \n", iris)
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+model = GaussianNB()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print("Predicted Output \n" , y_pred)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: { accuracy * 100:.2f}%")
+
+p4a
+library(datasets)
+data(iris)
+print(iris)
+names(iris)
+summary(iris)
+summary(iris$Sepal.Width)
+is.na(iris$Sepal.Width)
+is.na(iris)
+length(unique(iris$Sepal.Width))
+plot(iris$Sepal.Width)
+plot(iris)
+plot(iris$Petal.Width,iris$Petal.Length)
+
+p4b
+install.packages("party")
+library(party) # Load package party
+library (datasets) # load datasets package
+data (iris) # load dataset
+print(iris)
+target = Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width
+cdt <- ctree(target, iris) #Build tree
+table(predict(cdt), iris$Species) # Create confusion matrix
+cdt #To display decision tree rulesplot(cdt, type=”simple”) #Plotting of decision tree
+plot(cdt, type="simple", main = "Decision Tree, Shipra Jana - 014") #Plotting of decision tree
+library(party)
+indexes = sample(150,99)
+iris_train = iris[indexes,]
+iris_test = iris[-indexes,]
+target = Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width
+cdt <- ctree(target, iris_train)
+table(predict(cdt, newdata = iris_test), iris_test$Species)
+plot(cdt, type="simple", main = "Shipra Jana - 014") #Plotting of decision tree
+
+p4c
+install.packages('e1071')
+library('e1071')
+data<-read.csv("/content/weather-nominal-weka.csv")
+print(data)
+weather_df=as.data.frame(data)
+weather_df
+Naive_Bayes_Model=naiveBayes(play ~.,data=weather_df )
+print(Naive_Bayes_Model)
+NB_Predictions = predict(Naive_Bayes_Model,weather_df)
+table(NB_Predictions, weather_df$play, dnn=c("Prediction", "Actual"))
+
+p5a
+import pandas as pd
+data = {
+    'feature1': [5.1,4.9,6.2,5.9],
+    'feature2': [3.5,3.0,3.4,3.0],
+    'feature3': [1.4,1.4,5.4,5.1],
+    'target': [0,0,2,1]
+}
+#  Convert the dictionary into a pandas dataFrame
+df = pd.DataFrame(data)
+print(df)
+feature_columns = ['feature1','feature2','feature3']
+target_column = 'target'
+
+x = df[feature_columns]  #features
+y = df[target_column]    # target
+print("Features_Columns")
+print(x)
+print("Target_Columns")
+print(y)
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
+
+print("Training Data")
+print(x_train)
+print(y_train)
+print("Testing Data")
+print(x_test)
+print(y_test)
+from sklearn.svm import SVC
+svm = SVC(kernel='linear', C=1.0)
+#Train the Classifier
+svm.fit(x_train,y_train)
+print("Model is Trained")
+y_pred = svm.predict(x_test)
+print("Predicted Values")
+print(y_pred)
+from sklearn.metrics import classification_report, accuracy_score
+accuracy = accuracy_score(y_test,y_pred)
+print("Accuracy of the Model")
+print(accuracy)
+print("Classification Report")
+print(classification_report(y_test,y_pred))
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
+
+plt.figure(figsize=(8,6))
+plt.scatter(df['feature1'],df['feature2'], c=df['target'], cmap='viridis', edgecolor='k')
+plt.xlabel('Feature1')
+plt.ylabel('Feature2')
+plt.title('\n\nSHIPRA JANA \n\nScatter Plot of Features')
+
+p5b
